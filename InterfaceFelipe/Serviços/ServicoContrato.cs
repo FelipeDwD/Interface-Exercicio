@@ -19,7 +19,8 @@ namespace Interface2.Serviços
 
                 for (int i = 1; i <= parcelas; i++)
                 {
-                    Parcela parcela = new Parcela(DateTime.Today, servicoPagamentoOnline.PagamentoParcelaPaypal(i, valorParcela));                    
+                    DateTime diaPagamentoParcela = contrato.Data.AddMonths(i);
+                    Parcela parcela = new Parcela(diaPagamentoParcela, servicoPagamentoOnline.PagamentoParcelaPaypal(i, valorParcela));                    
                     contrato.AdicionarParcela(parcela);
                 }
             }
